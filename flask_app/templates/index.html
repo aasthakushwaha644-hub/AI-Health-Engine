@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Health Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <div class="logo">🩺</div>
+                <div class="hero-text">
+                    <h1>AI Health Engine</h1>
+                    <p>
+                        Explore possible health conditions from selected symptoms
+                        using a machine-learning model and receive general health guidance.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- How It Works Section -->
+        <section class="how-section">
+            <div class="section-title">
+                <div>
+                    <h2>How It Works</h2>
+                    <p>Simple three-step symptom assessment</p>
+                </div>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <h3>Select Symptoms</h3>
+                        <p>Choose the symptoms that best describe how you feel.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <h3>AI Analysis</h3>
+                        <p>The trained model compares your symptoms with learned patterns.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <h3>View Results</h3>
+                        <p>Understand the model predictions and general health guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symptom Selection Section -->
+        <section class="symptom-section">
+            <div class="section-title">
+                <div>
+                    <h2>Select Symptoms</h2>
+                    <p>Choose one or more symptoms for the assessment</p>
+                </div>
+                <span id="counter" class="counter">0 selected</span>
+            </div>
+
+            <div class="search-area">
+                <div class="search-box-wrapper">
+                    <span>⌕</span>
+                    <input 
+                        type="text" 
+                        id="search" 
+                        placeholder="Search symptoms..." 
+                        autocomplete="off" 
+                        oninput="searchSymptoms()"
+                    >
+                </div>
+                <button type="button" class="clear-search" onclick="clearSearch()">
+                    Clear Search
+                </button>
+            </div>
+
+            <div id="symptomList" class="symptoms-grid">
+                {% for symptom in symptoms %}
+                <label class="symptom">
+                    <input type="checkbox" value="{{ symptom }}">
+                    <span>{{ symptom.replace('_', ' ').title() }}</span>
+                </label>
+                {% endfor %}
+            </div>
+
+            <div class="action-area">
+                <button type="button" class="predict-btn" onclick="predictDisease()">
+                    Analyze Symptoms
+                </button>
+                <button type="button" class="clear-btn" onclick="clearSymptoms()">
+                    Clear All
+                </button>
+            </div>
+        </section>
+
+        <!-- Prediction Result Container -->
+        <main id="result" class="result hidden"></main>
+
+        <!-- Print & Actions Section -->
+        <div id="printSection" class="report-actions hidden">
+            <button type="button" class="print-btn" onclick="printReport()">
+                Print / Save as PDF
+            </button>
+            <button type="button" class="new-btn" onclick="clearSymptoms()">
+                New Assessment
+            </button>
+        </div>
+
+        <!-- Visual Insights Section -->
+        <section class="analysis-section">
+            <div class="section-title">
+                <div>
+                    <h2>Project Analysis</h2>
+                    <p>Visual insights from the machine-learning project</p>
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <div class="chart-heading">
+                        <h3>Disease Distribution</h3>
+                    </div>
+                    <img src="{{ url_for('static', filename='disease_distribution.png') }}" alt="Disease Distribution">
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-heading">
+                        <h3>Model Performance</h3>
+                    </div>
+                    <img src="{{ url_for('static', filename='model_performance.png') }}" alt="Model Performance">
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer Section -->
+        <section class="disclaimer">
+            <div class="disclaimer-icon">i</div>
+            <div>
+                <h3>Important Information</h3>
+                <p>
+                    This application provides general health information based on
+                    selected symptoms. It is not a medical diagnosis and should not
+                    replace professional medical advice.
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <strong>AI Health Engine</strong>
+            <span>Machine Learning • Explainable Results • Health Guidance</span>
+            <small>Built for educational purposes</small>
+        </footer>
+
+    </div>
+
+    <!-- Main JavaScript File -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

@@ -1,67 +1,94 @@
 # AI Health Engine
 
-AI Health Engine is a machine learning based web application that analyzes selected symptoms and provides possible health condition predictions along with risk information, general health guidance, diet suggestions, and recommended medical specialty.
+AI Health Engine is a machine-learning-powered web application that predicts possible health conditions based on user-selected symptoms and provides general health information.
 
 ## Features
 
-- Symptom-based health condition prediction
-- Top 3 possible predictions with relative scores
-- Risk/attention level assessment
-- Explanation of important selected symptoms
-- General health advice
-- Diet and food suggestions
-- Recommended medical specialty
-- Emergency symptom detection
-- Interactive web interface
-- Machine learning model integrated with Flask backend
+* Symptom-based disease prediction
+* Top predicted conditions with prediction scores
+* Health risk information
+* General health advice and diet suggestions
+* Recommended medical specialty
+* Emergency symptom warnings
+* Interactive web interface
 
 ## Technologies Used
 
-- Python
-- Flask
-- Machine Learning
-- Scikit-learn
-- Pandas
-- NumPy
-- Joblib
-- HTML
-- CSS
-- JavaScript
+* Python
+* Flask
+* Pandas
+* NumPy
+* Scikit-learn
+* Joblib
+* HTML
+* CSS
+* JavaScript
 
 ## Project Structure
 
+```text
 AI-Health-Engine/
-
 ├── dataset/
 │   ├── Testing.csv
 │   └── Training.csv
-│
 ├── flask_app/
 │   ├── static/
+│   │   ├── disease_distribution.png
+│   │   ├── model_performance.png
 │   │   ├── script.js
-│   │   ├── style.css
-│   │   └── charts
-│   │
+│   │   └── style.css
 │   ├── templates/
 │   │   └── index.html
-│   │
 │   └── app.py
-│
 ├── models/
 │   └── health_model.pkl
-│
 ├── notebooks/
 │   └── health_analysis.ipynb
-│
+├── .gitignore
 ├── create_chart.py
 ├── requirements.txt
-├── .gitignore
 └── README.md
+```
 
-## How to Run
+## How to Run Locally
 
-### 1. Clone the repository
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/aasthakushwaha644-hub/AI-Health-Engine.git
 cd AI-Health-Engine
+```
+
+### Step 2: Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### Step 3: Activate the Virtual Environment (Windows)
+
+```bash
+venv\Scripts\activate
+```
+
+### Step 4: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 5: Run the Application
+
+```bash
+python flask_app/app.py
+```
+
+### Step 6: Open in Your Browser
+
+Open the following URL in your browser:
+
+http://127.0.0.1:5000/
+
+## Disclaimer
+
+This project is intended for educational and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for medical concerns. Seek urgent medical care in an emergency.
